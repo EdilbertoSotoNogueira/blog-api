@@ -36,4 +36,28 @@ class CommentRepository implements CommentInterface
     }
 
 
+    public function delete($id)
+    {
+
+        return Comment::where('id', $id)
+                        ->where('users_id', Auth::id())
+                        ->delete();
+
+    }
+
+
+    public function update($params, $id)
+    {
+
+        $update = Comment::where('id', $id)
+                        ->where('users_id', Auth::id())
+                        ->first();
+        
+        $update->comments = $params->comments != null ? $params->comments : $update->comments;
+
+        return $update->save();
+
+    }
+
+
 }

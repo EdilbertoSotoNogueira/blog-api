@@ -28,7 +28,7 @@ class CommentController extends Controller
 
             $comment = $this->commentService->create($request);
             
-            return response()->json(['Comentário inserido com sucesso',$comment]);
+            return response()->json(['Comentário inserido com sucesso']);
 
         }
         catch(\Exception $e)
@@ -59,6 +59,48 @@ class CommentController extends Controller
 
         }
             
+    }
+
+
+    public function delete($id)
+    {
+
+        try
+        {
+
+            $this->commentService->delete($id);
+
+            return response()->json(['Comentário excluido com sucesso']);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
+
+    }
+
+
+    public function update(Request $request, $id)
+    {
+
+        try
+        {
+
+            $this->commentService->update($request, $id);
+
+            return response()->json(['Comentário alterado com sucesso']);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
+
     }
 
 

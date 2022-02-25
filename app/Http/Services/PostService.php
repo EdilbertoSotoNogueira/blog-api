@@ -39,6 +39,15 @@ class PostService
         return $this->postRepository->update($params, $id);
 
     }
+
+
+    public function delete($id)
+    {
+
+        $this->postRepository->deleteAllComments($id);
+        return $this->postRepository->delete($id);
+
+    }
     
 
 

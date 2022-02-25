@@ -11,4 +11,8 @@ interface PostInterface
 
     public function update($params, $id);
 
+    public function delete($id);
+
+    public function deleteAllComments($id);
+
 }

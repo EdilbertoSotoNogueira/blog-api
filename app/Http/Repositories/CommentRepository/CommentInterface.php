@@ -9,4 +9,8 @@ interface CommentInterface
 
     public function get();
 
+    public function delete($id);
+
+    public function update($params, $id);
+
 }

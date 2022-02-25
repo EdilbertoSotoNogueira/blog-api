@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,14 +19,30 @@ Route::middleware('auth:sanctum')->group(function()
 
         Route::post('', [PostController::class, 'create']);
         Route::get('', [PostController::class, 'get']);
-        Route::get('/comment', [CommentController::class, 'get']);
 
-        Route::prefix('/{id}')->group(function()
-        {   
+            Route::prefix('{id}')->group(function()
+            {
 
-            Route::post('/comment', [CommentController::class, 'create']);
-            Route::patch('/update', [PostController::class, 'update']);
-            
+                Route::delete('delete', [PostController::class, 'delete']);
+                Route::patch('/update', [PostController::class, 'update']);
+
+            });
+
+        Route::prefix('comments')->group(function()
+        {
+
+            Route::get('', [CommentController::class, 'get']);
+
+                Route::prefix('{id}')->group(function()
+                {
+
+                    Route::delete('/delete', [CommentController::class, 'delete']);
+                    Route::post('', [CommentController::class, 'create']);
+                    Route::patch('/update', [CommentController::class, 'update']);
+
+
+                });
+
         });
 
     });

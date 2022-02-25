@@ -50,7 +50,7 @@ class PostController extends Controller
 
             $list = $this->postService->get();
             
-            return response()->json(['Listagem dos postagens',$list]);
+            return $list;
 
         }
         catch(\Exception $e)
@@ -66,7 +66,42 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
 
-        return $this->postService->update($request, $id);
+        try
+        {
+
+            $this->postService->update($request, $id);
+
+            return response()->json(['Postagem alterada com sucesso']);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
+
+
+    }
+
+
+    public function delete($id)
+    {
+
+        try
+        {
+
+            $this->postService->delete($id);
+
+            return response()->json(['Post Deleteado com sucesso']);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
 
     }
 

@@ -33,4 +33,20 @@ class CommentService
     }
 
 
+    public function delete($id)
+    {
+
+        return $this->commentRepository->delete($id);
+
+    }
+
+
+    public function update($params, $id)
+    {
+
+        return $this->commentRepository->update($params, $id);
+
+    }
+
+
 }

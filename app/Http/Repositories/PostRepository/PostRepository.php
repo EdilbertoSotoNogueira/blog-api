@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\PostRepository;
 
 use App\Http\Repositories\PostRepository\PostInterface;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class PostRepository implements PostInterface
         $post->post_body = $params->post_body;
         $post->users_id  = Auth::id();
 
-        $post->save();
+        return $post->save();
 
     }
 
@@ -48,5 +49,24 @@ class PostRepository implements PostInterface
 
     }
 
+
+    public function delete($id)
+    {
+
+        return Post::where('id', $id)
+                    ->where('users_id', Auth::id())
+                    ->delete();
+
+    }
+
+
+    public function deleteAllComments($id)
+    {
+
+        return Comment::where('posts_id', $id)
+                        ->delete();
+
+    }
+    
 
 }
