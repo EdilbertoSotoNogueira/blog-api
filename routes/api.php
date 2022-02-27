@@ -3,7 +3,6 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,6 +12,8 @@ Route::get('/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function()
 {
+
+    Route::get('logout', [UserController::class, 'logout']);
 
     Route::prefix('posts')->group(function()
     {

@@ -69,6 +69,26 @@ class UserController extends Controller
         }
 
     }
+    
 
+    public function logout()
+    {
+
+        try
+        {
+
+            $this->userService->logout();
+
+            return response()->json(['Usuário deslogado com sucesso']);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
+
+    }
 
 }

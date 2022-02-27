@@ -9,4 +9,6 @@ interface UserInterface
 
     public function login($params);
 
+    public function logout();
+
 }

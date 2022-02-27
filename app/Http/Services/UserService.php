@@ -3,7 +3,9 @@
 namespace App\Http\Services;
 
 use App\Http\Repositories\UserRepository\UserRepository;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserService
 {
@@ -39,6 +41,14 @@ class UserService
             'token_type'   => 'Bearer'
 
         ]);
+
+    }
+
+
+    public function logout()
+    {
+
+        return $this->userRepository->logout();
 
     }
 

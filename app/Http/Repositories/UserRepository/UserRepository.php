@@ -4,6 +4,7 @@ namespace App\Http\Repositories\UserRepository;
 
 use App\Http\Repositories\UserRepository\UserInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepository implements UserInterface
 {
@@ -32,6 +33,14 @@ class UserRepository implements UserInterface
 
         return User::where('email', $params->email)->firstorfail();
         
+    }
+
+
+    public function logout()
+    {
+
+        return Auth::user()->tokens()->delete();
+
     }
 
         
