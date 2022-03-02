@@ -25,20 +25,20 @@ class UserController extends Controller
     public function create(CreateRequest $request)
     {
 
-        try
-        {
+            try
+            {
 
-            $this->userService->create($request);
+                $this->userService->create($request);
 
-            return response()->json(['Usuário cadastrado com sucesso']);
+                return response()->json(['Usuário cadastrado com sucesso']);
 
-        }
-        catch(\Exception $e)
-        {
+            }
+            catch(\Exception $e)
+            {
 
-            return response()->json(['Houve um erro no servidor']);
+                return response()->json(['Houve um erro no servidor']);
 
-        }
+            }
 
     }
 

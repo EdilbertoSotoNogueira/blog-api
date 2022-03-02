@@ -67,6 +67,16 @@ class PostRepository implements PostInterface
                         ->delete();
 
     }
+
+
+    public function filter($params)
+    {
+
+        return Post::where('title', 'like', '%'.$params->title.'%')
+                    ->where('post_body', 'like', '%'.$params->post_body.'%')
+                    ->get();
+
+    }
     
 
 }

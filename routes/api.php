@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function()
 
         Route::post('', [PostController::class, 'create']);
         Route::get('', [PostController::class, 'get']);
+        Route::get('filter', [PostController::class, 'filter']);
 
             Route::prefix('{id}')->group(function()
             {

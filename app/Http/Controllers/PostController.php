@@ -106,4 +106,25 @@ class PostController extends Controller
     }
 
 
+    public function filter(Request $request)
+    {
+
+        try
+        {
+
+            $list = $this->postService->filter($request);
+
+            return response()->json([$list]);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor']);
+
+        }
+
+    }
+
+
 }

@@ -48,6 +48,14 @@ class PostService
         return $this->postRepository->delete($id);
 
     }
+
+
+    public function filter($params)
+    {
+
+        return $this->postRepository->filter($params);
+
+    }
     
 
 
