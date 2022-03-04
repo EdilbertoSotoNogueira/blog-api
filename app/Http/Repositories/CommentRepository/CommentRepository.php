@@ -21,7 +21,7 @@ class CommentRepository implements CommentInterface
 
         $comment->users_id = Auth::id();
 
-        $comment->posts_id = $params->id;
+        $comment->post_id = $params->id;
 
         return $comment->save();
         

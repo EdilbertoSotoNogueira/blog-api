@@ -29,7 +29,7 @@ class PostRepository implements PostInterface
     public function get()
     {
 
-        return Post::get()->where('users_id', Auth::id());
+        return Post::where('users_id', Auth::id())->get();
 
     }
 
@@ -74,6 +74,15 @@ class PostRepository implements PostInterface
 
         return Post::where('title', 'like', '%'.$params->title.'%')
                     ->where('post_body', 'like', '%'.$params->post_body.'%')
+                    ->get();
+
+    }
+
+
+    public function getPostAndComments($params)
+    {
+
+        return Post::where('id', $params->id)
                     ->get();
 
     }

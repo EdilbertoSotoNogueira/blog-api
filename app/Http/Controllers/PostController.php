@@ -127,4 +127,41 @@ class PostController extends Controller
     }
 
 
+    public function getPostAndComment(Request $request)
+    {
+
+        $postComments[] = [];
+
+        try
+        {
+
+            $comments = $this->postService->getPostAndComments($request);
+
+            foreach($comments as $comment)
+            {
+
+                $list = 
+                [
+
+                    'title'       =>$comment->title,
+                    'body'        =>$comment->post_body,
+                    'Comentarios' => $comment->comments
+
+                ];
+
+            }
+
+            return response()->json([$list]);
+
+        }
+        catch(\Exception $e)
+        {
+
+            return response()->json(['Houve um erro no servidor', $e->getMessage()]);
+
+        }
+
+    }
+
+
 }

@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function()
 
                 Route::delete('delete', [PostController::class, 'delete']);
                 Route::patch('/update', [PostController::class, 'update']);
+                Route::get('/all', [PostController::class, 'getPostAndComment']);
 
             });
 

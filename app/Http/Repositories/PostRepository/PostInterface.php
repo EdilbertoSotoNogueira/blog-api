@@ -17,4 +17,6 @@ interface PostInterface
 
     public function filter($params);
 
+    public function getPostAndComments($params);
+
 }

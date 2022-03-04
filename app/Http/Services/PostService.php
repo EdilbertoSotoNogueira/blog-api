@@ -56,6 +56,14 @@ class PostService
         return $this->postRepository->filter($params);
 
     }
+
+
+    public function getPostAndComments($params)
+    {
+
+        return $this->postRepository->getPostAndComments($params);
+            
+    }
     
 
 

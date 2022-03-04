@@ -26,7 +26,7 @@ class CommentController extends Controller
         try
         {
 
-            $comment = $this->commentService->create($request);
+            $this->commentService->create($request);
             
             return response()->json(['Comentário inserido com sucesso']);
 
